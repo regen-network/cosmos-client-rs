@@ -1,3 +1,5 @@
+use tonic::Request;
+
 pub mod tendermint {
     pub mod libs {
         pub mod kv {
@@ -96,4 +98,16 @@ pub mod cosmos_sdk {
             }
         }
     }
+}
+
+async fn test1() -> Result<(), Box<dyn std::error::Error>> {
+    let mut client = cosmos_sdk::x::bank::v1::query_service_client::QueryServiceClient::connect("localhost:1234").await?;
+    let req = Request::new(
+        cosmos_sdk::x::bank::v1::QueryAllBalancesRequest{
+            address:Vec::new()
+        }
+    );
+    let res = client.query_all_balances(req).await?;
+    println!("RESPONSE={:?}", res);
+    Ok(())
 }
