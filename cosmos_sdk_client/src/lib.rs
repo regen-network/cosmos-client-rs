@@ -60,11 +60,6 @@ pub mod cosmos_sdk {
                 tonic::include_proto!("cosmos_sdk.x.gov.v1");
             }
         }
-        pub mod mint {
-            pub mod v1 {
-                tonic::include_proto!("cosmos_sdk.x.mint.v1");
-            }
-        }
         pub mod params {
             pub mod v1 {
                 tonic::include_proto!("cosmos_sdk.x.params.v1");
