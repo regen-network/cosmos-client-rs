@@ -1,6 +1,5 @@
 [workspace]
 
 members = [
-  "cosmos_sdk_prost",
-  "canonical_proto"
+  "cosmos_prost_types",
 ]
