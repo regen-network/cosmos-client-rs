@@ -1,5 +1,3 @@
-use tonic::Request;
-
 pub mod tendermint {
     pub mod libs {
         pub mod kv {
@@ -24,6 +22,19 @@ pub mod cosmos_sdk {
     pub mod v1 {
         tonic::include_proto!("cosmos_sdk.v1");
     }
+
+    pub mod tx {
+        pub mod v1 {
+            tonic::include_proto!("cosmos_sdk.tx.v1");
+        }
+    }
+
+    pub mod crypto {
+        pub mod v1 {
+            tonic::include_proto!("cosmos_sdk.crypto.v1");
+        }
+    }
+
     pub mod x {
         pub mod auth {
             pub mod v1 {
@@ -86,23 +97,4 @@ pub mod cosmos_sdk {
             }
         }
     }
-    pub mod codec {
-        pub mod std {
-            pub mod v1 {
-                tonic::include_proto!("cosmos_sdk.codec.std.v1");
-            }
-        }
-    }
-}
-
-async fn test1() -> Result<(), Box<dyn std::error::Error>> {
-    let mut client = cosmos_sdk::x::bank::v1::query_service_client::QueryServiceClient::connect("localhost:1234").await?;
-    let req = Request::new(
-        cosmos_sdk::x::bank::v1::QueryAllBalancesRequest{
-            address:Vec::new()
-        }
-    );
-    let res = client.query_all_balances(req).await?;
-    println!("RESPONSE={:?}", res);
-    Ok(())
 }

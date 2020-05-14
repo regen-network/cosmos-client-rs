@@ -1,5 +1,5 @@
 [package]
-name = "cosmos_sdk_client"
+name = "cosmos_prost_types"
 version = "0.1.0"
 authors = ["Aaron Craelius <aaronc@users.noreply.github.com>"]
 edition = "2018"
