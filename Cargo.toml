@@ -2,4 +2,5 @@
 
 members = [
   "cosmos_prost_types",
+  "cosmos_prost_client",
 ]
